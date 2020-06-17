@@ -17,7 +17,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
-Plug 'git@github.com:ycm-core/YouCompleteMe.git'
+Plug 'ycm-core/YouCompleteMe.git'
 Plug 'mbbill/undotree'
 
 call plug#end()
