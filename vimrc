@@ -10,6 +10,7 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set noshowmode
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -17,8 +18,10 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
-Plug 'ycm-core/YouCompleteMe.git'
 Plug 'mbbill/undotree'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -34,9 +37,12 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>t :Ex<CR>
+nnoremap <leader>t :tabnew<CR>:Ex<CR>
 nnoremap <leader>e :hide<CR>
 nnoremap <leader>n :tabnew<CR>
 nnoremap <leader>c :tabclose<CR>
 
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+
+inoremap {<CR> {<CR>}<Esc>O<Tab>
+
