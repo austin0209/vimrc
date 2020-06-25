@@ -10,7 +10,6 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set noshowmode
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -32,7 +31,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
-	colorscheme gruvbox
+colorscheme gruvbox
 set background=dark
 
 let mapleader = " "
