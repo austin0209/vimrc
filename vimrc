@@ -10,6 +10,7 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set list lcs=tab:\|\ 
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -28,10 +29,11 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mkitt/tabline.vim'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme gruvbox 
 set background=dark
 
 let mapleader = " "
@@ -50,5 +52,5 @@ nnoremap <leader>c :tabclose<CR>
 
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
 
-inoremap {<CR> {<CR>}<Esc>O<Tab>
+inoremap {<CR> {<CR>}<Esc>O
 
