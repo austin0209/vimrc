@@ -33,7 +33,7 @@ Plug 'mkitt/tabline.vim'
 
 call plug#end()
 
-colorscheme gruvbox 
+colorscheme gruvbox
 set background=dark
 
 let mapleader = " "
@@ -54,3 +54,10 @@ nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
 
 inoremap {<CR> {<CR>}<Esc>O
 
+"Taken from the vim community wiki to highlight trailing spaces.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
