@@ -49,6 +49,7 @@ nnoremap <leader>t :tabnew<CR>:Ex<CR>
 nnoremap <leader>e :hide<CR>
 nnoremap <leader>n :tabnew<CR>
 nnoremap <leader>c :tabclose<CR>
+nnoremap <leader>v :vsp<CR>:wincmd l<CR>:CtrlP<CR>
 
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
 
