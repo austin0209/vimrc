@@ -11,6 +11,8 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set list lcs=tab:\|\ 
+set foldmethod=indent
+set nofoldenable
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
