@@ -35,6 +35,8 @@ Plug 'mkitt/tabline.vim'
 
 call plug#end()
 
+let g:gruvbox_contrast_dark = 'hard'
+
 colorscheme gruvbox
 set background=dark
 
