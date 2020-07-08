@@ -1,7 +1,7 @@
 syntax on
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=4 softtabstop=4 "set tab-width to 4
+set shiftwidth=4 "set width of >> to 4
 set smartindent
 set nu
 set nowrap
@@ -10,18 +10,14 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set list lcs=tab:\|\ 
-set foldmethod=indent
-set nofoldenable
+set list lcs=tab:\|\ "highlight trailing spaces
+set foldmethod=indent "set to fold by indents
+set nofoldenable "do not fold by default
+set noshowmode "do not show mode on bottom (not needed bc of airline)
 
+"draw a grey bar after 80 characters
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
 call plug#begin('~/.vim/plugged')
 
@@ -35,14 +31,19 @@ Plug 'mkitt/tabline.vim'
 
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'hard'
+"code I found on reddit to remove the delay when leaving insert mode
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+augroup END
 
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
 let mapleader = " "
 let g:netrw_browse_split = 0
-"let g:netrw_winsize = 25
 let g:netrw_banner = 0
 
 nnoremap <leader>h :wincmd h<CR>
@@ -59,7 +60,7 @@ nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
 
 inoremap {<CR> {<CR>}<Esc>O
 
-"Taken from the vim community wiki to highlight trailing spaces.
+"taken from the vim community wiki to highlight trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
