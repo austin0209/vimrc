@@ -10,7 +10,7 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set list lcs=tab:\|\ "highlight trailing spaces
+set list lcs=tab:\|\ "add indicators for tabs
 set foldmethod=indent "set to fold by indents
 set nofoldenable "do not fold by default
 set noshowmode "do not show mode on bottom (not needed bc of airline)
@@ -38,7 +38,6 @@ augroup FastEscape
     au InsertLeave * set timeoutlen=1000
 augroup END
 
-let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
@@ -67,3 +66,7 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+"highlight line when in insert mode
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
