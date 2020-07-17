@@ -23,13 +23,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
 Plug 'mbbill/undotree'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
+
+let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-python", "coc-json", "coc-omnisharp", "coc-tsserver"]
 
 "code I found on reddit to remove the delay when leaving insert mode
 augroup FastEscape
@@ -55,8 +57,6 @@ nnoremap <leader>n :tabnew<CR>
 nnoremap <leader>c :tabclose<CR>
 nnoremap <leader>v :vsp<CR>:wincmd l<CR>:CtrlP<CR>
 
-nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
-
 inoremap {<CR> {<CR>}<Esc>O
 
 "taken from the vim community wiki to highlight trailing spaces
@@ -70,3 +70,22 @@ autocmd BufWinLeave * call clearmatches()
 "highlight line when in insert mode
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+
+"taken from coc.nvim wiki
+"use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+
+"use tab and shift tab to navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"      \ coc#refresh()
+"use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"close preview window when completion is done
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
