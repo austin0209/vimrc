@@ -28,10 +28,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'tpope/vim-dispatch'
+Plug 'dense-analysis/ale'
+Plug 'preservim/nerdcommenter'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
-let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-python", "coc-json", "coc-omnisharp", "coc-tsserver"]
+let g:coc_global_extensions = ["coc-clangd", "coc-html", "coc-python", "coc-json", "coc-tsserver"]
 
 "code I found on reddit to remove the delay when leaving insert mode
 augroup FastEscape
@@ -89,3 +95,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"      \ coc#refresh(
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "close preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+"uncomment for omnisharp bindings/config
+"source $HOME\AppData\Local\nvim\omnisharp.vim
